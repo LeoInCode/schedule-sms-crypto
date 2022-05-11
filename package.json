@@ -1,0 +1,25 @@
+{
+  "name": "schedule-sms-crypto",
+  "version": "1.0.0",
+  "description": "Scheduling a sms with information about bitcoin",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoInCode/schedule-sms-crypto.git"
+  },
+  "author": "Leonardo Mendes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoInCode/schedule-sms-crypto/issues"
+  },
+  "homepage": "https://github.com/LeoInCode/schedule-sms-crypto#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "node-schedule": "^2.1.0"
+  }
+}
