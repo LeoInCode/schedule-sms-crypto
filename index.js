@@ -1,7 +1,8 @@
 const dotenv = require('dotenv');
 dotenv.config({ path: '.env' });
 const axios = require('axios');
-const schedule = require('node-schedule');
+var CronJob = require('cron').CronJob;
+
 
 const getInformationsOfBinance = async () => {
   try {
@@ -48,8 +49,11 @@ const sendSMS = async (binance) => {
   }
 }
 
-schedule.scheduleJob('0 0 * * * *', async() => {
-  console.log("Run schedule");
-  const responseOfBinance = await getInformationsOfBinance();
-  await sendSMS(responseOfBinance);
-});
+job = new CronJob(
+	'0 0 * * * *',
+	async function() {
+		const responseOfBinance = await getInformationsOfBinance();
+    await sendSMS(responseOfBinance);
+	},
+);
+job.start()
