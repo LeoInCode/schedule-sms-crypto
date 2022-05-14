@@ -1,8 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config({ path: '.env' });
 const axios = require('axios');
-var CronJob = require('cron').CronJob;
-
 
 const getInformationsOfBinance = async () => {
   try {
@@ -49,11 +47,7 @@ const sendSMS = async (binance) => {
   }
 }
 
-job = new CronJob(
-	'0 0 * * * *',
-	async function() {
-		const responseOfBinance = await getInformationsOfBinance();
-    await sendSMS(responseOfBinance);
-	},
-);
-job.start()
+(async () => {
+  const responseOfBinance = await getInformationsOfBinance();
+  await sendSMS(responseOfBinance);
+})();
